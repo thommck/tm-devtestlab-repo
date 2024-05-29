@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+  "title": "Set Time Zone",
+  "description": "Set the time zone on a Windows VM to UK London",
+  "iconUri":"",
+  "publisher": "thommck",
+    "tags": [
+        "Windows",
+        "Time Zone",
+        "timezone"
+    ],
+    "targetOsType": "Windows",
+    "parameters": {
+        "TimeZoneId": {
+            "type": "string",
+            "displayName": "Time Zone ID",
+            "description": "Windows Time Zone ID",
+            "defaultValue": "UTC",
+            "allowEmpty": false,
+            "allowedValues": [
+                              "GMT Standard Time",
+            ]
+        }
+    },
+    "runCommand": {
+        "commandToExecute": "[concat('tzutil.exe', ' /s \"', parameters('TimeZoneId'), '\"')]"
+    }
+}
